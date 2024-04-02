@@ -24,30 +24,27 @@ import com.blog.project.security.JwtAuthentionFilter;
 @Configuration
 @EnableWebSecurity
 @EnableWebMvc
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 	
-	public static final String[] PUBLIC_URLS= {"v3/api-docs",
-            "v2/api-docs",
+	public static final String[] PUBLIC_URLS = {
+            "/v3/api-docs/**",
+            "/v2/api-docs/**",
             "/auth/**",
             "/swagger-resources/**",
             "/swagger-ui/**",
             "/webjars/**"};
-
-	
 	
 @Autowired
-	private CustomUserDetailService customUserDetailService;
+private CustomUserDetailService customUserDetailService;
 @Autowired
 private JwtAuthentionEntryPoint jwtAuthentionEntryPoint; 
-
 @Autowired
 private JwtAuthentionFilter jwtAuthentionFilter;
    
 
 @Bean
-public SecurityFilterChain securityfilterChain(HttpSecurity http) throws Exception {
-
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 http
     .csrf(csrf -> csrf.disable())
     .cors(cors->cors.disable())

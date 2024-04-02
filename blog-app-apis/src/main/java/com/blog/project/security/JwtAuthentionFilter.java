@@ -40,7 +40,7 @@ public class JwtAuthentionFilter extends OncePerRequestFilter {
         logger.info(" Header :  {}", requestHeader);
         String username = null;
         String token = null;
-        if (requestHeader != null && requestHeader.startsWith("Bearer")) {
+        if (requestHeader != null && requestHeader.startsWith("komal")) {
             //looking good
             token = requestHeader.substring(7);  // remove the Bearer and take rest of the String value of token
             try {
